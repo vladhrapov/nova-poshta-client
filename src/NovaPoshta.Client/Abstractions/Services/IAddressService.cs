@@ -1,5 +1,6 @@
 ﻿using NovaPoshta.Client.Models;
 using NovaPoshta.Client.Models.Data.Address;
+using NovaPoshta.Client.Models.Props.Address;
 using System;
 using System.Threading.Tasks;
 
@@ -8,88 +9,72 @@ namespace NovaPoshta.Client.Abstractions.Services
     public interface IAddressService
     {
         /// <summary>
-        /// 
+        /// Search all areas.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List of areas.</returns>
         Task<ResponsePayload<GetAreasData>> GetAreas();
 
         /// <summary>
-        /// 
+        /// Search cities by searched criteria.
         /// </summary>
-        /// <param name="cityRef"></param>
-        /// <returns></returns>
-        Task<ResponsePayload<GetCitiesData>> GetCities(Guid cityRef);
+        /// <param name="methodProps">Get cities model.</param>
+        /// <returns>List of searched cities.</returns>
+        Task<ResponsePayload<GetCitiesData>> GetCities(GetCitiesProps methodProps);
 
         /// <summary>
-        /// 
+        /// Search settlements by searched criteria.
         /// </summary>
-        /// <param name="areaRef"></param>
-        /// <param name="addressRef"></param>
-        /// <param name="regionRef"></param>
-        /// <param name="page"></param>
-        /// <returns></returns>
-        Task<ResponsePayload<GetSettlementsData>> GetSettlements(Guid areaRef, Guid addressRef, Guid regionRef, int page);
+        /// <param name="methodProps">Get settlements model.</param>
+        /// <returns>List of searched settlements.</returns>
+        Task<ResponsePayload<GetSettlementsData>> GetSettlements(GetSettlementsProps methodProps);
 
         /// <summary>
-        /// 
+        /// Search streets for the area by searched criteria.
         /// </summary>
-        /// <param name="cityRef"></param>
-        /// <returns></returns>
-        Task<ResponsePayload<GetStreetData>> GetStreet(Guid cityRef);
+        /// <param name="methodProps">Get street model</param>
+        /// <returns>List of searched streets.</returns>
+        Task<ResponsePayload<GetStreetData>> GetStreet(GetStreetProps methodProps);
 
         /// <summary>
-        /// 
+        /// Search list of warehouses.
         /// </summary>
-        /// <param name="language"></param>
-        /// <returns></returns>
-        Task<ResponsePayload<GetWarehousesData>> GetWarehouses(string language);
+        /// <param name="methodProps">Get warehouses model.</param>
+        /// <returns>List of Nova Poshta warehouses.</returns>
+        Task<ResponsePayload<GetWarehousesData>> GetWarehouses(GetWarehousesProps methodProps);
 
         /// <summary>
-        /// 
+        /// Search settlements by search criteria. 
         /// </summary>
-        /// <param name="cityName"></param>
-        /// <param name="limit"></param>
-        /// <returns></returns>
-        Task<ResponsePayload<SearchSettlementsData>> SearchSettlements(string cityName, uint limit);
+        /// <param name="methodProps">Search settlements model.</param>
+        /// <returns>List of settlements.</returns>
+        Task<ResponsePayload<SearchSettlementsData>> SearchSettlements(SearchSettlementsProps methodProps);
 
         /// <summary>
-        /// 
+        /// Search streets for the settlement by search criteria.
         /// </summary>
-        /// <param name="settlementRef"></param>
-        /// <param name="streetName"></param>
-        /// <param name="limit"></param>
-        /// <returns></returns>
-        Task<ResponsePayload<SearchSettlementStreetData>> SearchSettlementStreets(Guid settlementRef, string streetName, uint limit);
+        /// <param name="methodProps">Search settlement streets model.</param>
+        /// <returns>List of settlement streets.</returns>
+        Task<ResponsePayload<SearchSettlementStreetData>> SearchSettlementStreets(SearchSettlementStreetsProps methodProps);
 
         /// <summary>
-        /// 
+        /// Update contragent address.
         /// </summary>
-        /// <param name="counterpartyRef"></param>
-        /// <param name="streetRef"></param>
-        /// <param name="addressRef"></param>
-        /// <param name="buildingNumber"></param>
-        /// <param name="flat"></param>
-        /// <param name="note"></param>
-        /// <returns></returns>
-        Task<ResponsePayload<UpdateContragentAddressData>> UpdateContragentAddress(Guid counterpartyRef, Guid streetRef, Guid addressRef, string buildingNumber, ushort flat, string note);
+        /// <param name="methodProps">Contragent address model.</param>
+        /// <returns>Updated contragent address.</returns>
+        Task<ResponsePayload<UpdateContragentAddressData>> UpdateContragentAddress(UpdateContragentAddressProps methodProps);
 
         /// <summary>
-        /// 
+        /// Save contragent address.
         /// </summary>
-        /// <param name="counterpartyRef"></param>
-        /// <param name="streetRef"></param>
-        /// <param name="buildingNumber"></param>
-        /// <param name="flat"></param>
-        /// <param name="note"></param>
-        /// <returns></returns>
-        Task<ResponsePayload<SaveContragentAddressData>> SaveContragentAddress(Guid counterpartyRef, Guid streetRef, string buildingNumber, ushort flat, string note);
+        /// <param name="methodProps">Contragent address model.</param>
+        /// <returns>Saved contragent address.</returns>
+        Task<ResponsePayload<SaveContragentAddressData>> SaveContragentAddress(SaveContragentAddressProps methodProps);
 
         /// <summary>
-        /// 
+        /// Delete contragent address by id.
         /// </summary>
-        /// <param name="addressRef"></param>
-        /// <returns></returns>
+        /// <param name="addressRef">Address id.</param>
+        /// <returns>List with deleted address id.</returns>
         Task<ResponsePayload<DeleteContragentAddressData>> DeleteContragentAddress(Guid addressRef);
-
     }
 }

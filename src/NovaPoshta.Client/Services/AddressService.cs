@@ -19,64 +19,142 @@ namespace NovaPoshta.Client.Services
 
         public Task<ResponsePayload<DeleteContragentAddressData>> DeleteContragentAddress(Guid addressRef)
         {
-            throw new NotImplementedException();
+            var payload = new RequestPayload<DeleteContragentAddressProps>
+            {
+                ApiKey = base.ApiConnection.ApiKey,
+                ModelName = "Address",
+                CalledMethod = "delete",
+                MethodProperties = new DeleteContragentAddressProps(addressRef)
+            };
+
+            return ApiConnection.PostAsync<DeleteContragentAddressProps, DeleteContragentAddressData>(payload);
         }
 
         public Task<ResponsePayload<GetAreasData>> GetAreas()
         {
-            throw new NotImplementedException();
+            var payload = new RequestPayload<GetAreasProps>
+            {
+                ApiKey = base.ApiConnection.ApiKey,
+                ModelName = "Address",
+                CalledMethod = "getAreas",
+                MethodProperties = new GetAreasProps()
+            };
+
+            return ApiConnection.PostAsync<GetAreasProps, GetAreasData>(payload);
         }
 
-        public Task<ResponsePayload<GetCitiesData>> GetCities(Guid cityRef)
+        public Task<ResponsePayload<GetCitiesData>> GetCities(GetCitiesProps methodProps)
         {
-            throw new NotImplementedException();
+            var payload = new RequestPayload<GetCitiesProps>
+            {
+                ApiKey = base.ApiConnection.ApiKey,
+                ModelName = "Address",
+                CalledMethod = "getCities",
+                MethodProperties = methodProps
+            };
+
+            return ApiConnection.PostAsync<GetCitiesProps, GetCitiesData>(payload);
         }
 
-        public Task<ResponsePayload<GetSettlementsData>> GetSettlements(Guid areaRef, Guid addressRef, Guid regionRef, int page)
+        public Task<ResponsePayload<GetSettlementsData>> GetSettlements(GetSettlementsProps methodProps)
         {
-            throw new NotImplementedException();
+            var payload = new RequestPayload<GetSettlementsProps>
+            {
+                ApiKey = base.ApiConnection.ApiKey,
+                ModelName = "AddressGeneral",
+                CalledMethod = "getSettlements",
+                MethodProperties = methodProps
+            };
+
+            return ApiConnection.PostAsync<GetSettlementsProps, GetSettlementsData>(payload);
         }
 
-        public Task<ResponsePayload<GetStreetData>> GetStreet(Guid cityRef)
+        public Task<ResponsePayload<GetStreetData>> GetStreet(GetStreetProps methodProps)
         {
-            throw new NotImplementedException();
+            var payload = new RequestPayload<GetStreetProps>
+            {
+                ApiKey = base.ApiConnection.ApiKey,
+                ModelName = "Address",
+                CalledMethod = "getStreet",
+                MethodProperties = methodProps
+            };
+
+            return base.ApiConnection.PostAsync<GetStreetProps, GetStreetData>(payload);
+
         }
 
-        public Task<ResponsePayload<GetWarehousesData>> GetWarehouses(string language)
+        public Task<ResponsePayload<GetWarehousesData>> GetWarehouses(GetWarehousesProps methodProps)
         {
-            throw new NotImplementedException();
+            var payload = new RequestPayload<GetWarehousesProps>
+            {
+                ApiKey = base.ApiConnection.ApiKey,
+                ModelName = "AddressGeneral",
+                CalledMethod = "getWarehouses",
+                MethodProperties = methodProps
+            };
+
+            return base.ApiConnection.PostAsync<GetWarehousesProps, GetWarehousesData>(payload);
         }
 
-        public Task<ResponsePayload<SaveContragentAddressData>> SaveContragentAddress(Guid counterpartyRef, Guid streetRef, string buildingNumber, ushort flat, string note)
+        public Task<ResponsePayload<SaveContragentAddressData>> SaveContragentAddress(SaveContragentAddressProps methodProps)
         {
-            throw new NotImplementedException();
+            var payload = new RequestPayload<SaveContragentAddressProps>
+            {
+                ApiKey = base.ApiConnection.ApiKey,
+                ModelName = "Address",
+                CalledMethod = "save",
+                MethodProperties = methodProps
+            };
+
+            return base.ApiConnection.PostAsync<SaveContragentAddressProps, SaveContragentAddressData>(payload);
         }
 
-        public Task<ResponsePayload<SearchSettlementsData>> SearchSettlements(string cityName, uint limit)
+        public Task<ResponsePayload<SearchSettlementsData>> SearchSettlements(SearchSettlementsProps methodProps)
         {
             var payload = new RequestPayload<SearchSettlementsProps>
             {
                 ApiKey = base.ApiConnection.ApiKey,
                 ModelName = "Address",
                 CalledMethod = "searchSettlements",
-                MethodProperties = new SearchSettlementsProps
-                {
-                    CityName = cityName,
-                    Limit = limit
-                }
+                MethodProperties = methodProps
             };
 
             return base.ApiConnection.PostAsync<SearchSettlementsProps, SearchSettlementsData>(payload);
         }
 
-        public Task<ResponsePayload<SearchSettlementStreetData>> SearchSettlementStreets(Guid settlementRef, string streetName, uint limit)
+        public Task<ResponsePayload<SearchSettlementStreetData>> SearchSettlementStreets(SearchSettlementStreetsProps methodProps)
         {
-            throw new NotImplementedException();
+            if (methodProps is null)
+                throw new ArgumentNullException(nameof(methodProps));
+
+            if (string.IsNullOrEmpty(methodProps.StreetName))
+                throw new ArgumentException($"{nameof(methodProps.StreetName)} can't be null or empty.");
+
+            var payload = new RequestPayload<SearchSettlementStreetsProps>
+            {
+                ApiKey = base.ApiConnection.ApiKey,
+                ModelName = "Address",
+                CalledMethod = "searchSettlementStreets",
+                MethodProperties = methodProps
+            };
+
+            return base.ApiConnection.PostAsync<SearchSettlementStreetsProps, SearchSettlementStreetData>(payload);
         }
 
-        public Task<ResponsePayload<UpdateContragentAddressData>> UpdateContragentAddress(Guid counterpartyRef, Guid streetRef, Guid addressRef, string buildingNumber, ushort flat, string note)
+        public Task<ResponsePayload<UpdateContragentAddressData>> UpdateContragentAddress(UpdateContragentAddressProps methodProps)
         {
-            throw new NotImplementedException();
+            if (methodProps is null)
+                throw new ArgumentNullException(nameof(methodProps));
+
+            var payload = new RequestPayload<UpdateContragentAddressProps>
+            {
+                ApiKey = base.ApiConnection.ApiKey,
+                ModelName = "Address",
+                CalledMethod = "update",
+                MethodProperties = methodProps
+            };
+
+            return base.ApiConnection.PostAsync<UpdateContragentAddressProps, UpdateContragentAddressData>(payload);
         }
     }
 }
