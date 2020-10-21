@@ -2,21 +2,21 @@
 
 namespace NovaPoshta.Client.Models.Props.Address
 {
-    public sealed class GetCitiesProps
+    public sealed class GetStreetProps
     {
         /// <summary>
-        /// City id.
+        /// Serach by city id.
         /// </summary>
-        public Guid? Ref { get; set; }
+        public Guid? CityRef { get; set; }
 
         /// <summary>
-        /// Search by city name.
+        /// Search by street name.
         /// </summary>
         public string FindByString { get; set; }
 
         /// <summary>
         /// Page number to return.
         /// </summary>
-        public uint Page { get; set; }
+        public uint? Page { get; set; }
     }
 }

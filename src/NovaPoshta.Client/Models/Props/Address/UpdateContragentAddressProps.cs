@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NovaPoshta.Client.Models.Props.Address
 {
@@ -9,22 +7,31 @@ namespace NovaPoshta.Client.Models.Props.Address
         /// <summary>
         /// Contragent id.
         /// </summary>
-        public Guid CounterpartyRef { get; set; }
+        public Guid? CounterpartyRef { get; set; }
 
         /// <summary>
         /// Address id.
         /// </summary>
-        public Guid Ref { get; set; }
+        public Guid? Ref { get; set; }
 
         /// <summary>
         /// Street id.
         /// </summary>
-        public Guid StreetRef { get; set; }
+        public Guid? StreetRef { get; set; }
 
+        /// <summary>
+        /// Number of the building.
+        /// </summary>
         public string BuildingNumber { get; set; }
 
-        public ushort Flat { get; set; }
+        /// <summary>
+        /// Number of the flat.
+        /// </summary>
+        public ushort? Flat { get; set; }
 
+        /// <summary>
+        /// Any comments.
+        /// </summary>
         public string Note { get; set; }
     }
 }
