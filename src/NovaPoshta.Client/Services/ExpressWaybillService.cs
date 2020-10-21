@@ -5,8 +5,6 @@ using NovaPoshta.Client.Models;
 using NovaPoshta.Client.Models.Data.ExpressWaybill;
 using NovaPoshta.Client.Models.Props.ExpressWaybill;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace NovaPoshta.Client.Services
@@ -20,7 +18,7 @@ namespace NovaPoshta.Client.Services
 
         public string ModelName => "InternetDocument";
 
-        public Task<ResponsePayload<GetArchiveDocumentsByPhoneData>> GetArchieveDocumentList()
+        public Task<ResponsePayload<GetArchiveDocumentsByPhoneData>> GetArchieveDocumentList(int page, int limit)
         {
             var payload = new RequestPayload<GetArchiveDocumentsByPhoneProps>
             {
@@ -32,15 +30,15 @@ namespace NovaPoshta.Client.Services
                 {
                     DateFrom = $"{DateTime.UtcNow.AddDays(-90).Date.ToString("dd.MM.yyyy")} 00:00:00",
                     DateTo = $"{DateTime.UtcNow.Date.ToString("dd.MM.yyyy")} 00:00:00",
-                    Page = 1,
-                    Limit = 20
+                    Page = page,
+                    Limit = limit
                 }
             };
 
             return ApiConnection.PostAsync<GetArchiveDocumentsByPhoneProps, GetArchiveDocumentsByPhoneData>(payload);
         }
 
-        public Task<ResponsePayload<GetIncomingDocumentsByPhoneData>> GetIncomingDocumentList()
+        public Task<ResponsePayload<GetIncomingDocumentsByPhoneData>> GetIncomingDocumentList(int page, int limit)
         {
             var payload = new RequestPayload<GetIncomingDocumentsByPhoneProps>
             {
@@ -51,8 +49,8 @@ namespace NovaPoshta.Client.Services
                 {
                     DateFrom = $"{DateTime.UtcNow.AddDays(-60).Date.ToString("dd.MM.yyyy")} 00:00:00",
                     DateTo = $"{DateTime.UtcNow.AddDays(30).Date.ToString("dd.MM.yyyy")} 00:00:00",
-                    Page = 1,
-                    Limit = 20
+                    Page = page,
+                    Limit = limit
                 }
             };
 
