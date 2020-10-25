@@ -1,5 +1,6 @@
 ﻿using NovaPoshta.Client.Models;
 using NovaPoshta.Client.Models.Data.ExpressWaybill;
+using NovaPoshta.Client.Models.Props.ExpressWaybill;
 using System.Threading.Tasks;
 
 namespace NovaPoshta.Client.Abstractions.Services
@@ -21,5 +22,12 @@ namespace NovaPoshta.Client.Abstractions.Services
         /// <param name="limit">Records per page limit.</param>
         /// <returns>List of incomming parcels.</returns>
         Task<ResponsePayload<GetIncomingDocumentsByPhoneData>> GetIncomingDocumentList(int page, int limit);
+
+        /// <summary>
+        /// Search for all parcels.
+        /// </summary>
+        /// <param name="methodProps"></param>
+        /// <returns></returns>
+        Task<ResponsePayload<GetDocumentListData>> GetDocumentList(GetDocumentListProps methodProps);
     }
 }
