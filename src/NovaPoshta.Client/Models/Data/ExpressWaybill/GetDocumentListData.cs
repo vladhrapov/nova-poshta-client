@@ -34,7 +34,7 @@ namespace NovaPoshta.Client.Models.Data.ExpressWaybill
         /// <summary>
         /// 
         /// </summary>
-        public uint? IntDocNumber { get; set; }
+        public string IntDocNumber { get; set; }
 
         /// <summary>
         /// 
