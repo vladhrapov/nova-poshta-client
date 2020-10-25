@@ -51,6 +51,19 @@ namespace NovaPoshta.Client.Services
             return ApiConnection.PostAsync<GetDocumentListProps, GetDocumentListData>(payload);
         }
 
+        public Task<ResponsePayload<GetDocumentPriceData>> GetDocumentPriceData(GetDocumentPriceProps methodProps)
+        {
+            var payload = new RequestPayload<GetDocumentPriceProps>
+            {
+                ApiKey = ApiConnection.ApiKey,
+                ModelName = ModelName,
+                CalledMethod = "getDocumentPrice",
+                MethodProperties = methodProps
+            };
+
+            return ApiConnection.PostAsync<GetDocumentPriceProps, GetDocumentPriceData>(payload);
+        }
+
         public Task<ResponsePayload<GetIncomingDocumentsByPhoneData>> GetIncomingDocumentList(int page, int limit)
         {
             var payload = new RequestPayload<GetIncomingDocumentsByPhoneProps>

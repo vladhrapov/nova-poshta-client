@@ -26,8 +26,15 @@ namespace NovaPoshta.Client.Abstractions.Services
         /// <summary>
         /// Search for all parcels.
         /// </summary>
-        /// <param name="methodProps"></param>
-        /// <returns></returns>
+        /// <param name="methodProps">Request method properties.</param>
+        /// <returns>List of parcels documents.</returns>
         Task<ResponsePayload<GetDocumentListData>> GetDocumentList(GetDocumentListProps methodProps);
+
+        /// <summary>
+        /// Calculate delivery price.
+        /// </summary>
+        /// <param name="methodProps">Request method properties.</param>
+        /// <returns>List of parcels documents price.</returns>
+        Task<ResponsePayload<GetDocumentPriceData>> GetDocumentPriceData(GetDocumentPriceProps methodProps);
     }
 }
