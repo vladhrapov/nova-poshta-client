@@ -38,10 +38,17 @@ namespace NovaPoshta.Client.Abstractions.Services
         Task<ResponsePayload<GetDocumentPriceData>> GetDocumentPriceData(GetDocumentPriceProps methodProps);
 
         /// <summary>
-        /// Serach for delivery date.
+        /// Search for delivery date.
         /// </summary>
         /// <param name="methodProps">Request method properties.</param>
         /// <returns>List of parcels documents price.</returns>
         Task<ResponsePayload<GetDocumentDeliveryDateData>> GetDocumentDeliveryDate(GetDocumentDeliveryDateProps methodProps);
+
+        /// <summary>
+        /// Update express waybill info. Will update only changed info.
+        /// </summary>
+        /// <param name="methodProps">Request method properties.</param>
+        /// <returns>Updated short waybill info.</returns>
+        Task<ResponsePayload<UpdateWaybillData>> UpdateWaybill(UpdateWaybillProps methodProps);
     }
 }
