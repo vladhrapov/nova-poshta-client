@@ -1,2 +1,10 @@
-# nova-poshta-client
+# Nova Poshta .NET client
+
+![CI](https://github.com/vladhrapov/nova-poshta-client/workflows/CI/badge.svg?branch=develop)
+<span>
+  <a href="https://github.com/vladhrapov/uwp-dependency-injection/blob/master/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Injectify is released under the MIT license." />
+  </a>
+</span>
+
 Nova Poshta API client
