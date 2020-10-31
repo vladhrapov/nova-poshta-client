@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Install latest .NET Core SDK
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.100
+
+      # Print .NET Core SDK version
+      - name: Print .NET Core version
+        run: echo `dotnet --version`
+
+      # Restore project dependencies and build in Release mode
+      - name: Restore dependencies and build RELEASE package
+        working-directory: ./src/NovaPoshta.Client
+        run: |
+          dotnet restore ./NovaPoshta.Client.csproj
+          dotnet build -c Release ./NovaPoshta.Client.csproj
