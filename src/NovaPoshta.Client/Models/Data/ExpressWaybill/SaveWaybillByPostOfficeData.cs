@@ -1,6 +1,6 @@
 ﻿namespace NovaPoshta.Client.Models.Data.ExpressWaybill
 {
-    public sealed class SaveWaybillByAddressData : SaveWaybillData
+    public sealed class SaveWaybillByPostOfficeData : SaveWaybillData
     {
     }
 }
