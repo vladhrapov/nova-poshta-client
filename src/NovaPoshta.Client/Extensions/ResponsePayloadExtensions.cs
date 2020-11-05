@@ -6,7 +6,7 @@ using System.Text;
 
 namespace NovaPoshta.Client.Extensions
 {
-    public static class ResponsePayloadExtentions
+    public static class ResponsePayloadExtensions
     {
         public static List<ErrorModel> ToErrorList<T>(this ResponsePayload<T> response)
         {
