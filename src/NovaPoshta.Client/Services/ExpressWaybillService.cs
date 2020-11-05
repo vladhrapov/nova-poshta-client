@@ -96,6 +96,19 @@ namespace NovaPoshta.Client.Services
             return ApiConnection.PostAsync<GetIncomingDocumentsByPhoneProps, GetIncomingDocumentsByPhoneData>(payload);
         }
 
+        public Task<ResponsePayload<SaveWaybillData>> SaveWaybill(SaveWaybillProps methodProps)
+        {
+            var payload = new RequestPayload<SaveWaybillProps>
+            {
+                ApiKey = ApiConnection.ApiKey,
+                ModelName = ModelName,
+                CalledMethod = "save",
+                MethodProperties = methodProps
+            };
+
+            return ApiConnection.PostAsync<SaveWaybillProps, SaveWaybillData>(payload);
+        }
+
         public Task<ResponsePayload<SaveWaybillByAddressData>> SaveWaybillByAddress(SaveWaybillByAddressProps methodProps)
         {
             var payload = new RequestPayload<SaveWaybillByAddressProps>

@@ -52,6 +52,13 @@ namespace NovaPoshta.Client.Abstractions.Services
         Task<ResponsePayload<UpdateWaybillData>> UpdateWaybill(UpdateWaybillProps methodProps);
 
         /// <summary>
+        /// Create express waybill.
+        /// </summary>
+        /// <param name="methodProps">Request method properties.</param>
+        /// <returns>Created short waybill info.</returns>
+        Task<ResponsePayload<SaveWaybillData>> SaveWaybill(SaveWaybillProps methodProps);
+
+        /// <summary>
         /// Create express waybill for the address.
         /// </summary>
         /// <param name="methodProps">Request method properties.</param>
