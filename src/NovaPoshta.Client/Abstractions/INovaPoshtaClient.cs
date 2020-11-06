@@ -1,14 +1,9 @@
-﻿using NovaPoshta.Client.Abstractions.Connection;
-using NovaPoshta.Client.Abstractions.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using NovaPoshta.Client.Abstractions.Services;
 
 namespace NovaPoshta.Client.Abstractions
 {
-    public interface INovaPoshtaClient
+    public interface INovaPoshtaClient : INovaPoshtaBasicClient
     {
-        IApiConnection ApiConnection { get; }
         ILoyaltyInfoService LoyaltyInfo { get; }
         IAddressService Address { get; }
         IExpressWaybillService ExpressWaybill { get; }
